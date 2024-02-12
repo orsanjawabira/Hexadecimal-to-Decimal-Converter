@@ -1,0 +1,21 @@
+Main task - Write an assembly program that takes a two-digit hexadecimal number as input, converts it to a decimal number, and then displays the largest digit of the decimal number.
+Broken down into subtasks
+1.	Input handling: reading 2 hexadecimal digits as an input.
+2.	Hexadecimal to decimal conversion: converting the 2 hexadecimal digits to a decimal number.
+3.	Largest digit identification: finding and displaying the largest digit from the decimal number.
+Hexadecimal to decimal conversion
+•	Multiply each bit by 16^n, where n is the weight od the bit 
+•	The weight is the position of the bit starting from 0 on the right 
+•	Add the results
+Biggest digit identification: as each digit is converted, compare it with a register storing the current largest digit and update if the new digit is larger.
+Loop conditions
+-	Initialization: after processing each digit, increment the counter
+-	Condition: For each digit, the loop checks if the counter is less than 2(there are 2 digits)
+-	Increment: after processing each digit increment the counter
+-	Once both digits are processed exit the loop 
+Achieving Looping in Assembly Language:
+•	Label creation: define a label at the point where the loop begins. This acts as the entry point for the loop
+•	Condition check: before or after the loop body include a conditional check. If the conditional check is met, the loop continues otherwise it exists.
+•	Loop body: this is where the main instructions of the loop are executed 
+•	Jump instructions: to go back to the label if the loop is to continue 
+•	Initialize value: this is the starting value of the loop counter or condition 

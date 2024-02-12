@@ -1,0 +1,54 @@
+// Pseudo-code for converting two-digit hexadecimal to decimal and finding the largest digit and showing its decimal equivalent  in C++
+ 
+#include <iostream>
+#include <string>
+#include <cctype>
+
+int asciiToNumeric(char ch) {
+    if (isdigit(ch))
+        return ch - '0';
+    else if (isupper(ch))
+        return 10 + ch - 'A';
+    else if (islower(ch))
+        return 10 + ch - 'a';
+    return -1; // Error case
+}
+
+int hexToDecimal(const std::string& hex) {
+    int decimal = 0;
+    decimal += asciiToNumeric(hex[0]) * 16;
+    decimal += asciiToNumeric(hex[1]);
+    return decimal;
+}
+
+int findLargestDigit(int number) {
+    int largest = 0;
+    while (number > 0) {
+        int digit = number % 10;
+        if (digit > largest)
+            largest = digit;
+        number /= 10;
+    }
+    return largest;
+}
+
+int main() {
+    std::string hexInput;
+    std::cout << "Enter a two-digit hexadecimal number: ";
+    std::cin >> hexInput;
+
+    int decimalValue = hexToDecimal(hexInput);
+    std::cout << "Decimal equivalent: " << decimalValue << std::endl;
+
+    int largestDigit = findLargestDigit(decimalValue);
+    std::cout << "The largest digit in the decimal format: " << largestDigit << std::endl;
+
+    return 0;
+}
+
+
+
+//The asciiToNumeric function takes a character and converts it to its numeric equivalent. It handles both upper and lower case hexadecimal characters.
+//The hexToDecimal function converts a two-digit hexadecimal string to its decimal equivalent.
+//The findLargestDigit function finds the largest digit in the given decimal number.
+//In main, the program prompts the user to enter a two-digit hexadecimal number, then uses the functions to convert this to decimal and find the largest digit, which is then displayed.
